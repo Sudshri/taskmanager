@@ -209,46 +209,7 @@ Ensure `mod_rewrite` is enabled. The included `public/.htaccess` (from Laravel's
 
 Set the root directory to `public/`, add your environment variables via the dashboard, and trigger a deploy. Both platforms auto-run `composer install` and `php artisan migrate`.
 
-### Docker (optional)
 
-A minimal `docker-compose.yml` for local development:
-
-```yaml
-version: "3.9"
-services:
-  app:
-    image: php:8.3-fpm
-    volumes:
-      - .:/var/www/html
-    depends_on:
-      - db
-
-  web:
-    image: nginx:alpine
-    ports:
-      - "8000:80"
-    volumes:
-      - .:/var/www/html
-      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf
-
-  db:
-    image: mysql:8.0
-    environment:
-      MYSQL_DATABASE: taskmanager
-      MYSQL_ROOT_PASSWORD: secret
-    ports:
-      - "3306:3306"
-```
-
----
-
-## Running Tests
-
-```bash
-php artisan test
-```
-
----
 
 ## License
 
